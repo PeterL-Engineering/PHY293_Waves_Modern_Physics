@@ -3,12 +3,12 @@
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
 \input{math_commands.tex}
 
-%######## CHE260: Uncomment your submission name
+%######## PHY293: Uncomment your submission name
 %\newcommand{\chename}{ - Project Proposal}
 %\newcommand{\chename}{Progress Report}
 %\newcommand{\chename}{Final Report}
 
-%######## CHE260: Put your Group Number here
+%######## PHY293: Put your Group Number here
 %\newcommand{\gpnumber}{40}
 
 \usepackage{hyperref}
@@ -21,11 +21,11 @@
 \usepackage{tikz}
 \usepackage{multicol}
 
-%######## CHE260: Put your project Title here
+%######## PHY293: Put your project Title here
 \title{Real-Time Neural Signal Filtering via \\
 Hodgkin-Huxley Simulation Models}
 
-%######## CHE260: Put your names, student IDs and Emails here
+%######## PHY293: Put your names, student IDs and Emails here
 \author{Karys Littlejohns\\
 Student\# \\
 karys.littlejohns@mail.utoronto.ca
@@ -48,7 +48,7 @@ peter.leong@mail.utoronto.ca \\
 \newcommand{\new}{\marginpar{NEW}}
 
 \iclrfinalcopy 
-%######## CHE260: Document starts here
+%######## PHY293: Document starts here
 \begin{document}
 
 \maketitle
@@ -60,7 +60,7 @@ This project addresses the challenge of automated colourization for 256$\times$2
 animals, and natural scenery. We frame colourization as a supervised learning problem in the CIELAB colour space, where a model predicts chrominance channels ($a^*$, $b^*$) 
 from the luminance channel ($L^*$). A shallow convolutional neural network (CNN) provides the baseline performance, while our primary solution employs a deeper convolutional 
 encoder-decoder architecture. This design captures high-level semantic features and spatial context, addressing limitations of shallow networks in perceptual realism.
-%######## CHE260: Do not change the next line. This shows your Main body page count.
+%######## PHY293: Do not change the next line. This shows your Main body page count.
 ----Total Pages: \pageref{last_page}
 \end{abstract}
 
@@ -73,7 +73,7 @@ encoder-decoder architecture. This design captures high-level semantic features 
 \section{Scope \& Feasibility}
 
 Begin by solving Hudgkin-Huxley equations using Euler's and Improved Euler's Method (since these are the methods we have learned thus far from ESC103)
-then expand and solve using Runge-Kutta methods once they are covered in CHE260. At a high-level, these solvers will generate synthetic neural data through
+then expand and solve using Runge-Kutta methods once they are covered in PHY293. At a high-level, these solvers will generate synthetic neural data through
 the Hodgkin-Huxley equations which are a set of non-linear ordinary differential equations that describe how ion channels create action potential.
 
 Following this we will design and implement a digital filter to isolate the spike band, and create a spike detection algorithm based upon an adaptive threshold
@@ -87,7 +87,7 @@ derived from the signal's noise floor.
 
 \newpage
 \bibliographystyle{iclr2022_conference}
-\bibliography{CHE260_Proposal_Ref}
+\bibliography{PHY293_Proposal_Ref}
 
 \end{multicols}
 \end{document}

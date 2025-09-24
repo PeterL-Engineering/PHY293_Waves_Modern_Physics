@@ -66,7 +66,55 @@ peter.leong@mail.utoronto.ca \\
 
 \section{Introduction}
 
-Sources of electricity 
+Sources of electricity produce a voltage potential across their terminals called an electromotive force (\textit{emf}) or an open circuit voltage, $V_{\infty}$.
+In practice, when a closed circuit is made, a current \textit{I} will be drawn and the voltage at the terminals, \textit{V} called \textit{terminal voltage} will fall below $V_{\infty}$.
+For most cases, many powers sources will exhibit a linear variation of R for small current values, with nonlinear behaviour at higher currents.
+The linear part of the curve can be described by:
+\[
+V = V_{infty} - RI
+\]
+where R is the \textit{output resistance of the powers source}.
+In this linear regime, according to Thevenin's theorem, the power source is completely represented by the equivalent circuit shown below.
+INCLUDE IMAGE FROM LAB HANDOUT
+
+The output resistance (\textit{R}) can be determined by attaching different external resistances of the load ($R_{l}$) to the power source, and measuring the current and voltage with a multimeter.
+\ref{figure } shows two possible ways of doing this. Both would be equivalent \textbf{if} the multimeter were ideal.
+However, in this exercuse we will measure with real, not ideal, multimeters.
+
+\section{Pre-Lab Exercises}
+
+Without connecting circuits and making measurements, we can expect the the voltmeter and ammeter readings to differ between the two options due to current and voltage leakage.
+More specifically, in option 1, we can expect the current to differ as the voltmeter allows some current to pass through. The amount of leakage will depend on the load resistance.
+Similarly, in option 2, we can expect that the voltage will differ as the ammeter will draw some voltage. Its leakage will too depend on the load resistance.
+
+To calculate the internal resistances of the voltmeter and the ammeter we can use basic current and voltage division.
+For the voltmeter, we can calculate the current that we expect to pass through the ammeter and solve for the voltmeter resistance.
+
+\[
+I_{ammeter} = I \frac{R_{voltmeter}}{R_{load} + R_{voltmeter}}
+\]
+
+\[
+I(R_{load} + R_{voltmeter}) = R_{voltmeter}
+\]
+
+\[
+R_{voltmeter} = \frac{I R_{load}}{1 - I}
+\]
+
+We can calculate the internal resistance of the ammeter similarly by using voltage division for the second circuit:
+
+\[
+I_{ammeter} = \frac{V}{R_{ammeter} + R_{load}}
+\]
+
+\[
+I(R_{ammeter} + R_{load}) = V
+\]
+
+\[
+R_{ammeter} = \frac{V}{I_{ammeter}} - R_{load}
+\]
 
 \section{Methods \& Procedure}
 

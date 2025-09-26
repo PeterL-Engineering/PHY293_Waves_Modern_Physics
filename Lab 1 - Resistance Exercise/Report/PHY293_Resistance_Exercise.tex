@@ -5,7 +5,7 @@
 
 %######## PHY293: Uncomment your submission name
 \newcommand{\phyname}{ - Lab Report}
-%\newcommand{\phyname}{Progress Report}
+%\newcommand{\phyname}{Prograss Report}
 %\newcommand{\phyname}{Final Report}
 
 %######## PHY293: Put your Group Number here
@@ -20,10 +20,12 @@
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{multicol}
+\usepackage{makecell}
+\usepackage[table]{xcolor}
 
 %######## PHY293: Put your project Title here
-\title{Real-Time Neural Signal Filtering via \\
-Hodgkin-Huxley Simulation Models}
+\title{The Output Resistance of A Power Supply \\
+An Introductory Uncertainty Analysis Exercise}
 
 %######## PHY293: Put your names, student IDs and Emails here
 \author{Karys Littlejohns\\
@@ -69,15 +71,28 @@ In practice, when a closed circuit is made, a current \textit{I} will be drawn a
 For most cases, many powers sources will exhibit a linear variation of R for small current values, with nonlinear behaviour at higher currents.
 The linear part of the curve can be described by:
 \[
-V = V_{infty} - RI
+V = V_{\infty} - RI
 \]
 where R is the \textit{output resistance of the powers source}.
 In this linear regime, according to Thevenin's theorem, the power source is completely represented by the equivalent circuit shown below.
-INCLUDE IMAGE FROM LAB HANDOUT
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.65\linewidth]{Figs/power_source.png}
+  \caption{Equivalent circuit of an electric power source.}
+  \label{fig:power_source}
+\end{figure}
 
 The output resistance (\textit{R}) can be determined by attaching different external resistances of the load ($R_{l}$) to the power source, and measuring the current and voltage with a multimeter.
-\ref{figure } shows two possible ways of doing this. Both would be equivalent \textbf{if} the multimeter were ideal.
+\ref{fig:two_circuits} shows two possible ways of doing this. Both would be equivalent \textbf{if} the multimeter were ideal.
 However, in this exercuse we will measure with real, not ideal, multimeters.
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.65\linewidth]{Figs/two_circuits.png}
+  \caption{Possible circuits for determining the output resistance of a power source.}
+  \label{fig:two_circuits}
+\end{figure}
 
 \section{Pre-Lab Exercises}
 
@@ -114,23 +129,71 @@ I(R_{ammeter} + R_{load}) = V
 R_{ammeter} = \frac{V}{I_{ammeter}} - R_{load}
 \]
 
-\section{Methods \& Procedure}
+\section{The Experiment}
 
-\section{Results}
+We began by measuring the resistance values of the provided resistors. 
+For the subsequent circuit experiments, we selected the two highest and two lowest resistance values to represent the load resistance conditions for the voltmeter and ammeter configurations, respectively. 
+The measured values with their associated uncertainties are presented below.
 
+\label{table_resistor_values}
 \begin{table}[htbp]
 \centering
-\caption{Resistor Values and Uncertainties}
+\caption{Measured Resistor Values and Uncertainties}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
  & $R_{l1}$ & $R_{l2}$ & $R_{l3}$ & $R_{l4}$ & $R_{l5}$ & $R_{l6}$ \\
 \hline
-Value ($\Omega$) & 185.00 & 330.50 & 470.25 & 680.75 & 820.30 & 1000.00 \\
+Value ($\Omega$) & 100.32 & 219.91 & 461.3 & 2.6960 k & 26.814 k & 101.57 k \\
 \hline
-Uncertainty ($\Omega$) & $\pm$0.05 & $\pm$0.08 & $\pm$0.12 & $\pm$0.15 & $\pm$0.18 & $\pm$0.20 \\
+Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$1.4 & $\pm$5.9 & $\pm$59 & $\pm$250 \\
 \hline
 \end{tabular}
 \end{table}
+
+INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1
+
+\begin{table}[htbp]
+\centering
+\caption{Circuit 1 Readings \& Results}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Ammeter Resistance \\ $R_A$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_A$ ($\Omega$)} \\
+\hline
+100.32 & $\pm$0.25 & 6.501 & $\pm$0.005 & 63.67 & $\pm$0.18 & & \\
+\hline
+219.91 & $\pm$0.49 & 6.501 & $\pm$0.005 & 29.315 & $\pm$0.064 & & \\
+\hline
+26.814 k & $\pm$0.059 k & 6.501 & $\pm$0.005 & 0.241 & $\pm$0.051 & & \\
+\hline
+101.57 k & $\pm$0.25 k & 6.501 & $\pm$0.005 & 0.063 & $\pm$0.005 & & \\
+\hline
+\cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & Average: &  &  \\
+\hline
+\end{tabular}
+\end{table}
+
+INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 2
+
+\begin{table}[htbp]
+\centering
+\caption{Circuit 2 Readings \& Results}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Voltmeter Resistance \\ $R_V$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_V$ ($\Omega$)} \\
+\hline
+100.32 & $\pm$0.25 & 6.386 & $\pm$0.005 & 63.60 & $\pm$0.18 & & \\
+\hline
+219.91 & $\pm$0.49 & 6.448 & $\pm$0.005 & 29.322 & $\pm$0.064 & & \\
+\hline
+26.814 k & $\pm$0.059 k & 6.501 & $\pm$0.005 & 0.243 & $\pm$0.051 & & \\
+\hline
+101.57 k & $\pm$0.25 k & 6.501 & $\pm$0.005 & 0.065 & $\pm$0.005 & & \\
+\hline
+\cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & Average: &  &  \\
+\hline
+\end{tabular}
+\end{table}
+
 
 \section{Discussion}
 
@@ -139,7 +202,7 @@ Uncertainty ($\Omega$) & $\pm$0.05 & $\pm$0.08 & $\pm$0.12 & $\pm$0.15 & $\pm$0.
 \label{last_page}
 
 \newpage
-\bibliographystyle{iclr2022_conference}
-\bibliography{PHY293_Resistance_Exercise}
+%\bibliographystyle{iclr2022_conference}
+%\bibliography{PHY293_Resistance_Exercise}
 
 \end{document}

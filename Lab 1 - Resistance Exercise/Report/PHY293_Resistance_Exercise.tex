@@ -103,31 +103,33 @@ Similarly, in option 2, we can expect that the voltage will differ as the ammete
 To calculate the internal resistances of the voltmeter and the ammeter we can use basic current and voltage division.
 For the voltmeter, we can calculate the current that we expect to pass through the ammeter and solve for the voltmeter resistance.
 
+\subsection{Voltmeter Internal Resistance Derivation}
+Starting from current division:
 \[
-I_{ammeter} = I \frac{R_{voltmeter}}{R_{load} + R_{voltmeter}}
+I_V = I \cdot \frac{R_V}{R_L + R_V}
 \]
+Solve for $R_V$:
+\begin{align*}
+I_V (R_L + R_V) &= I \cdot R_V \\
+I_V R_L + I_V R_V &= I R_V \\
+I_V R_L &= I R_V - I_V R_V \\
+I_V R_L &= R_V (I - I_V) \\
+R_V &= \frac{I_V R_L}{I - I_V}
+\end{align*}
 
+\subsection{Ammeter Internal Resistance Derivation}
+Starting from Ohm's Law:
 \[
-I(R_{load} + R_{voltmeter}) = R_{voltmeter}
+I_A = \frac{V}{R_A + R_L}
 \]
-
-\[
-R_{voltmeter} = \frac{I R_{load}}{1 - I}
-\]
-
-We can calculate the internal resistance of the ammeter similarly by using voltage division for the second circuit:
-
-\[
-I_{ammeter} = \frac{V}{R_{ammeter} + R_{load}}
-\]
-
-\[
-I(R_{ammeter} + R_{load}) = V
-\]
-
-\[
-R_{ammeter} = \frac{V}{I_{ammeter}} - R_{load}
-\]
+Solve for $R_A$:
+\begin{align*}
+I_A (R_A + R_L) &= V \\
+I_A R_A + I_A R_L &= V \\
+I_A R_A &= V - I_A R_L \\
+R_A &= \frac{V - I_A R_L}{I_A} \\
+R_A &= \frac{V}{I_A} - R_L
+\end{align*}
 
 \section{The Experiment}
 

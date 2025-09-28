@@ -4,7 +4,7 @@
 \input{math_commands.tex}
 
 %######## PHY293: Uncomment your submission name
-\newcommand{\phyname}{ - Lab Report}
+\newcommand{\phyname}{}
 %\newcommand{\phyname}{Progress Report}
 %\newcommand{\phyname}{Final Report}
 
@@ -24,8 +24,8 @@
 \usepackage[table]{xcolor}
 
 %######## PHY293: Put your project Title here
-\title{Real-Time Neural Signal Filtering via \\
-Hodgkin-Huxley Simulation Models}
+\title{The Output Resistance of a Power Supply \\
+An Introductory Resistance Exercise}
 
 %######## PHY293: Put your names, student IDs and Emails here
 \author{Karys Littlejohns\\
@@ -57,29 +57,52 @@ peter.leong@mail.utoronto.ca \\
 
 \vspace{-6ex}
 
-\begin{abstract}
+% \begin{abstract}
 
-----Total Pages: \pageref{last_page}
-\end{abstract}
+% ----Total Pages: \pageref{last_page}
+% \end{abstract}
 
-\vspace{2ex}
+%\vspace{2ex}
 
 \section{Introduction}
 
 Sources of electricity produce a voltage potential across their terminals called an electromotive force (\textit{emf}) or an open circuit voltage, $V_{\infty}$.
 In practice, when a closed circuit is made, a current \textit{I} will be drawn and the voltage at the terminals, \textit{V} called \textit{terminal voltage} will fall below $V_{\infty}$.
+A plot of what the terminal voltage $V$ vs. current $I$ may look like is shown in \ref{fig:terminal_voltage_vs_current}.
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.65\linewidth]{Figs/terminal_voltage_current_linear.jpg}
+  \caption{Terminal voltage vs. current}
+  \label{fig:terminal_voltage_vs_current}
+\end{figure}
+
 For most cases, many powers sources will exhibit a linear variation of R for small current values, with nonlinear behaviour at higher currents.
 The linear part of the curve can be described by:
 \[
-V = V_{infty} - RI
+V = V_{\infty} - RI
 \]
 where R is the \textit{output resistance of the powers source}.
 In this linear regime, according to Thevenin's theorem, the power source is completely represented by the equivalent circuit shown below.
-INCLUDE IMAGE FROM LAB HANDOUT
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.65\linewidth]{Figs/power_source.png}
+  \caption{Equivalent circuit of an electric power source.}
+  \label{fig:power_source}
+\end{figure}
+
 
 The output resistance (\textit{R}) can be determined by attaching different external resistances of the load ($R_{l}$) to the power source, and measuring the current and voltage with a multimeter.
-\ref{figure } shows two possible ways of doing this. Both would be equivalent \textbf{if} the multimeter were ideal.
+\ref{fig:two_circuits} shows two possible ways of doing this. Both would be equivalent \textbf{if} the multimeter were ideal.
 However, in this exercuse we will measure with real, not ideal, multimeters.
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.65\linewidth]{Figs/two_circuits.png}
+  \caption{Possible circuits for determining the output resistance of a power source}
+  \label{fig:two_circuits}
+\end{figure}
 
 \section{Pre-Lab Exercises}
 
@@ -91,33 +114,25 @@ To calculate the internal resistances of the voltmeter and the ammeter we can us
 For the voltmeter, we can calculate the current that we expect to pass through the ammeter and solve for the voltmeter resistance.
 
 \subsection{Ammeter Internal Resistance Derivation}
-Starting from ohm's law:
+Starting from Ohm's law: \( V = I(R_A + R_L) \)
+Solve for \( R_A \):
 \[
-V = I(R_A + R_L)
+\frac{V}{I} = R_A + R_L \quad\Rightarrow\quad R_A = \frac{V}{I} - R_L
 \]
-Solve for $R_A$:
-\begin{align*}
-\frac{V}{I} = R_A + R_L \\
-\frac{V}{I} - R_L = R_A \\
-R_A = \frac{V}{I} - R_L
-\end{align*}
 
 \subsection{Voltmeter Internal Resistance Derivation}
-Starting from Ohm's Law:
+Starting from Ohm's Law: \( V = I\left(\frac{R_V R_L}{R_V + R_L}\right) \)
+Solve for \( R_V \):
 \[
-V = I(\frac{R_V + R_L}{R_V R_L})
+\frac{V}{I} = \frac{R_V R_L}{R_V + R_L} 
+\quad\Rightarrow\quad \frac{V}{I}(R_V + R_L) = R_V R_L 
+\quad\Rightarrow\quad \frac{V}{I}R_V + \frac{V}{I}R_L = R_V R_L
 \]
-Solve for $R_V$:
-\begin{align*}
-\frac{V}{I} &= \frac{R_V R_L}{R_V + R_L} \\
-\frac{V}{I} (R_V + R_L) &= R_V R_L \\
-\frac{V}{I} R_V + \frac{V}{I} R_L &= R_V R_L \\
-\frac{V}{I} R_L &= R_V R_L - \frac{V}{I} R_V \\
-\frac{V}{I} R_L &= R_V \left( R_L - \frac{V}{I} \right) \\
-R_V &= \frac{\frac{V}{I} R_L}{R_L - \frac{V}{I}} \\
-R_V &= \frac{V R_L}{I R_L - V}
-\end{align*}
-
+\[
+\frac{V}{I}R_L = R_V\left(R_L - \frac{V}{I}\right) 
+\quad\Rightarrow\quad R_V = \frac{\frac{V}{I}R_L}{R_L - \frac{V}{I}} 
+= \frac{V R_L}{I R_L - V}
+\]
 \section{The Experiment}
 
 We began by measuring the resistance values of the provided resistors. 
@@ -132,15 +147,15 @@ The measured values with their associated uncertainties are presented below.
 \hline
  & $R_{l1}$ & $R_{l2}$ & $R_{l3}$ & $R_{l4}$ & $R_{l5}$ & $R_{l6}$ \\
 \hline
-Value ($\Omega$) & 185.00 & 330.50 & 470.25 & 680.75 & 820.30 & 1000.00 \\
+Value ($\Omega$) & 100.32 & 219.91 & 461.3 & 2.6760 k & 26.814 k & 101.57 k \\
 \hline
-Uncertainty ($\Omega$) & $\pm$0.05 & $\pm$0.08 & $\pm$0.12 & $\pm$0.15 & $\pm$0.18 & $\pm$0.20 \\
+Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\pm$0.006 k & $\pm$0.25 k \\
 \hline
 \end{tabular}
 \end{table}
 
-
-INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1
+\subsection{Circuit Option 1}
+\textbf{INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1}
 
 \begin{table}[htbp]
 \centering
@@ -149,11 +164,11 @@ INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1
 \hline
 \makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Ammeter Resistance \\ $R_A$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_A$ ($\Omega$)} \\
 \hline
-100.32 & $\pm$0.25 & 6.501 & $\pm$0.005 & 63.67 & $\pm$0.18 & 1.78 & $\pm$0.39 \\
+100.32 & $\pm$0.25 & 6.499 & $\pm$0.005 & 63.67 & $\pm$0.18 & 1.78 & $\pm$0.39 \\
 \hline
-219.91 & $\pm$0.49 & 6.501 & $\pm$0.005 & 29.315 & $\pm$0.064 & 1.85 & $\pm$0.71 \\
+219.91 & $\pm$0.49 & 6.500 & $\pm$0.005 & 29.315 & $\pm$0.064 & 1.85 & $\pm$0.71 \\
 \hline
-26.814 k & $\pm$59 & 6.501 & $\pm$0.005 & 0.241 & $\pm$0.051 & 161.10 & $\pm$5708.77 \\
+26.814 k & $\pm$60 & 6.501 & $\pm$0.005 & 0.241 & $\pm$0.051 & 161.10 & $\pm$5708.77 \\
 \hline
 101.57 k & $\pm$250 & 6.501 & $\pm$0.005 & 0.063 & $\pm$0.005 & 1620.48 & $\pm$8193.92 \\
 \hline
@@ -162,6 +177,22 @@ INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1
 \end{tabular}
 \end{table}
 
+From this data, we applied a linear fit to determine the slope $m_1$ and its uncertainty.
+We obtained a slope value of $-0.046 \pm 0.004~\Omega$.
+The residuals plot and $\chi^2$ analysis suggested potential underestimation of uncertainties.
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=1\linewidth]{Figs/Circuit_1.png}
+    \caption{Linear regression of voltage versus current measurements showing an ideal voltage source behavior. 
+                The slope of $-1.813 \pm 0.003~\Omega$ represents the effective circuit resistance, while the intercept of $6.501 \pm 0.000~V$ corresponds to the source voltage. 
+                The excellent fit quality ($\chi^2 = 0.003$, $\chi^2/\nu = 0.001$, $p = 0.9987$) indicates the data are consistent with the linear model within measurement uncertainties.
+                Reading uncertainity was used for both V and I since they were greater than statistical uncertainties.}
+    \label{fig:circuit_1_fit}
+\end{figure}
+
+\subsection{Circuit Option 2}
+\textbf{INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 2}
 \begin{table}[htbp]
 \centering
 \caption{Circuit 2 Readings \& Results}
@@ -182,7 +213,20 @@ INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1
 \end{tabular}
 \end{table}
 
-\section{Discussion}
+From this data, we applied a linear fit to determine the slope $m_2$ and its uncertainty.
+We obtained a slope value of $-0.046 \pm 0.004~\Omega$.
+The residuals plot and $\chi^2$ analysis suggested potential underestimation of uncertainties.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\linewidth]{Figs/Circuit_2.png}
+    \caption{Linear regression of voltage versus current measurements for the voltmeter circuit configuration. 
+                The slope of $-0.046 \pm 0.004~\Omega$ represents the output resistance of the power source, while the intercept of $6.501 \pm 0.000~V$ corresponds to the open-circuit voltage. 
+                The near-zero slope indicates minimal internal resistance in the power supply. The fit quality ($\chi^2 = 0.003$, $\chi^2/\nu = 0.001$, $p = 0.9987$) suggests potential underestimation of measurement uncertainties.}
+    \label{fig:circuit_2_fit}
+\end{figure}
+
+\section{Analysis}
 
 \section{Conclusion}
 

@@ -21,10 +21,11 @@
 \usepackage{tikz}
 \usepackage{multicol}
 \usepackage{makecell}
+\usepackage{amsmath}
 \usepackage[table]{xcolor}
 
 %######## PHY293: Put your project Title here
-\title{The Output Resistance of a Power Supply \\
+\title{The Output Resistance of a Power Supply: \\
 An Introductory Resistance Exercise}
 
 %######## PHY293: Put your names, student IDs and Emails here
@@ -154,6 +155,7 @@ Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\
 \end{tabular}
 \end{table}
 
+\newpage
 \subsection{Circuit Option 1}
 \textbf{INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1}
 
@@ -162,7 +164,7 @@ Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\
 \caption{Circuit 1 Readings \& Results}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
-\makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Ammeter Resistance \\ $R_A$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_A$ ($\Omega$)} \\
+\makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Ammeter Res. \\ $R_A$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_A$ ($\Omega$)} \\
 \hline
 100.32 & $\pm$0.25 & 6.499 & $\pm$0.005 & 63.67 & $\pm$0.18 & 1.78 & $\pm$0.39 \\
 \hline
@@ -177,19 +179,23 @@ Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\
 \end{tabular}
 \end{table}
 
-From this data, we applied a linear fit to determine the slope $m_1$ and its uncertainty.
-We obtained a slope value of $-0.046 \pm 0.004~\Omega$.
-The residuals plot and $\chi^2$ analysis suggested potential underestimation of uncertainties.
+From the experimental data, a linear regression was applied to determine the slope $m_2$ and its associated uncertainty. 
+The analysis yielded a slope value of $-0.046 \pm 0.004~\Omega$, where the uncertainty was derived through the standard error propagation for linear fitting parameters (see Appendix \ref{app:c_linear_uncertainties}).
 
+The $\chi^2$ analysis and examination of residuals suggest a potential underestimation of the experimental uncertainties. 
+The resistance values $R_V$ used in this fit were calculated from voltage, current, and lead resistance measurements, with their uncertainties propagated according to the method detailed in Appendix \ref{app:b_RV_uncertainty}.
 \begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
   \centering
   \includegraphics[width=1\linewidth]{Figs/Circuit_1.png}
-    \caption{Linear regression of voltage versus current measurements showing an ideal voltage source behavior. 
-                The slope of $-1.813 \pm 0.003~\Omega$ represents the effective circuit resistance, while the intercept of $6.501 \pm 0.000~V$ corresponds to the source voltage. 
-                The excellent fit quality ($\chi^2 = 0.003$, $\chi^2/\nu = 0.001$, $p = 0.9987$) indicates the data are consistent with the linear model within measurement uncertainties.
-                Reading uncertainity was used for both V and I since they were greater than statistical uncertainties.}
-    \label{fig:circuit_1_fit}
+\caption{Linear regression of voltage versus current measurements for the voltmeter circuit configuration. 
+                The slope of $-0.046 \pm 0.004~\Omega$ represents the output resistance of the power source, while the intercept of $6.501 \pm 0.000~V$ corresponds to the open-circuit voltage. 
+                The near-zero slope indicates minimal internal resistance in the power supply. 
+                The fit quality ($\chi^2 = 0.003$, $\chi^2/\nu = 0.001$, $p = 0.9987$) suggests potential underestimation of measurement uncertainties.
+                Reading uncertainity was used for both V and I since they were greater than statistical uncertainties.}    
+                \label{fig:circuit_1_fit}
 \end{figure}
+
+\newpage
 
 \subsection{Circuit Option 2}
 \textbf{INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 2}
@@ -198,7 +204,7 @@ The residuals plot and $\chi^2$ analysis suggested potential underestimation of 
 \caption{Circuit 2 Readings \& Results}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
-\makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Voltmeter Resistance \\ $R_V$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_V$ ($\Omega$)} \\
+\makecell{Resistance \\ $R_{li}$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_{li}$ ($\Omega$)} & \makecell{Voltage \\ $V$ (V)} & \makecell{Uncertainty \\ $\Delta V$ (V)} & \makecell{Current \\ $I$ (mA)} & \makecell{Uncertainty \\ $\Delta I$ (mA)} & \makecell{Voltmeter Res. \\ $R_V$ ($\Omega$)} & \makecell{Uncertainty \\ $\Delta R_V$ ($\Omega$)} \\
 \hline
 100.32 & $\pm$0.25 & 6.386 & $\pm$0.005 & 63.60 & $\pm$0.18 & $-1.13 \times 10^5$ & $\pm$4.94$\times 10^5$ \\
 \hline
@@ -213,27 +219,177 @@ The residuals plot and $\chi^2$ analysis suggested potential underestimation of 
 \end{tabular}
 \end{table}
 
-From this data, we applied a linear fit to determine the slope $m_2$ and its uncertainty.
-We obtained a slope value of $-0.046 \pm 0.004~\Omega$.
-The residuals plot and $\chi^2$ analysis suggested potential underestimation of uncertainties.
+From the experimental data, a linear regression was applied to determine the slope $m_2$ and its associated uncertainty. 
+The analysis yielded a slope value of $-1.813 \pm 0.003~\Omega$, where the uncertainty was derived through the standard error propagation for linear fitting parameters (see Appendix \ref{app:c_linear_uncertainties}).
+
+The $\chi^2$ analysis and examination of residuals suggest a potential underestimation of the experimental uncertainties. 
+The resistance values $R_A$ used in this fit were calculated from voltage and current measurements, with their uncertainties propagated according to the method detailed in Appendix \ref{app:a_RA_uncertainty}.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1\linewidth]{Figs/Circuit_2.png}
-    \caption{Linear regression of voltage versus current measurements for the voltmeter circuit configuration. 
-                The slope of $-0.046 \pm 0.004~\Omega$ represents the output resistance of the power source, while the intercept of $6.501 \pm 0.000~V$ corresponds to the open-circuit voltage. 
-                The near-zero slope indicates minimal internal resistance in the power supply. The fit quality ($\chi^2 = 0.003$, $\chi^2/\nu = 0.001$, $p = 0.9987$) suggests potential underestimation of measurement uncertainties.}
+    \caption{Linear regression of voltage versus current measurements showing an ideal voltage source behavior. 
+                The slope of $-1.813 \pm 0.003~\Omega$ represents the effective circuit resistance, while the intercept of $6.501 \pm 0.000~V$ corresponds to the source voltage. 
+                The fit quality ($\chi^2 = 0.003$, $\chi^2/\nu = 0.001$, $p = 0.9987$) suggests potential underestimation of measurement uncertainties.
+                Reading uncertainity was used for both V and I since they were greater than statistical uncertainties.}
     \label{fig:circuit_2_fit}
 \end{figure}
 
 \section{Analysis}
+
+\subsection{Interal Resistance Using R\_V}
+
+The internal resistance of the power source can be derived from the relationship between the measured resistance $m_1$, the voltmeter resistance $R_V$, and the internal resistance $R_{internal}$. 
+The measured resistance $m_1$ represents the parallel combination of the voltmeter resistance and the internal resistance:
+
+\begin{align*}
+m_1 = \frac{R_V \cdot R_{internal}}{R_V + R_{internal}}
+\end{align*}
+
+Solving this equation for $R_{internal}$:
+
+\begin{align*}
+m_1 (R_V + R_{internal}) &= R_V \cdot R_{internal} \\
+m_1 R_V + m_1 R_{internal} &= R_V \cdot R_{internal} \\
+m_1 R_V &= R_V \cdot R_{internal} - m_1 R_{internal} \\
+m_1 R_V &= R_{internal} (R_V - m_1)
+\end{align*}
+
+Thus, the explicit expression for the internal resistance is:
+
+\begin{align*}
+R_{internal} = \frac{m_1 \cdot R_V}{R_V - m_1}
+\end{align*}
+
+\subsection{Interal Resistance Using R\_A}
+
+The internal resistance of the power source can also be derived from the relationship between the measured resistance $m_2$, the calculated resistance $R_A$, and the internal resistance $R_{internal}$. 
+The measured resistance $m_2$ represents the parallel combination of the resistance $R_A$ and the internal resistance:
+
+\begin{align*}
+m_2 = \frac{R_A \cdot R_{internal}}{R_A + R_{internal}}
+\end{align*}
+
+Solving this equation for $R_{internal}$:
+
+\begin{align*}
+m_2 (R_A + R_{internal}) &= R_A \cdot R_{internal} \\
+m_2 R_A + m_2 R_{internal} &= R_A \cdot R_{internal} \\
+m_2 R_A &= R_A \cdot R_{internal} - m_2 R_{internal} \\
+m_2 R_A &= R_{internal} (R_A - m_2)
+\end{align*}
+
+Thus, the explicit expression for the internal resistance is:
+
+\begin{align*}
+R_{internal} = \frac{m_2 \cdot R_A}{R_A - m_2}
+\end{align*}
 
 \section{Conclusion}
 
 \label{last_page}
 
 \newpage
-\bibliographystyle{iclr2022_conference}
-\bibliography{PHY293_Resistance_Exercise}
+% \bibliographystyle{iclr2022_conference}
+% \bibliography{PHY293_Resistance_Exercise}
+
+\appendix
+
+\section{Uncertainty Derivation for Resistance Measurement R\_A}
+\label{app:a_RA_uncertainty}
+
+\subsection*{Step 1: Uncertainty in Division $\frac{V}{I}$}
+\begin{align*}
+z = \frac{V}{I} \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_I}{I}\right)^2 \quad \Rightarrow \quad \sigma_{term1} = \frac{V}{I} \cdot \sqrt{\left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_I}{I}\right)^2}
+\end{align*}
+
+\subsection*{Step 2: Uncertainty in Subtraction $R_A = term1 - R_{li}$}
+\begin{align*}
+R_A = A - B \quad \Rightarrow \quad \sigma_{R_A} = \sqrt{\sigma_A^2 + \sigma_B^2} \quad \Rightarrow \quad \sigma_{R_A} = \sqrt{\sigma_{term1}^2 + \sigma_{R_{li}}^2}
+\end{align*}
+
+\subsection*{Complete Uncertainty Propagation}
+\begin{align*}
+\sigma_{R_A} &= \sqrt{\left[\frac{V}{I} \cdot \sqrt{\left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_I}{I}\right)^2}\right]^2 + \sigma_{R_{li}}^2} \quad \Rightarrow \quad \sigma_{R_A} = \sqrt{\left(\frac{V}{I}\right)^2 \cdot \left[\left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_I}{I}\right)^2\right] + \sigma_{R_{li}}^2}
+\end{align*}
+
+Where: $\sigma_V = \texttt{dV}$, $\sigma_I = \texttt{dI}$, $\sigma_{R_{li}} = \texttt{dR\_li}$
+
+
+\newpage
+
+\section{Uncertainty Derivation for Resistance Measurement R\_V}
+\label{app:b_RV_uncertainty}
+
+\subsection*{Step 1: Uncertainty in Numerator $N = V \cdot R_{li}$}
+\begin{align*}
+N = V \cdot R_{li} \quad \Rightarrow \quad \left(\frac{\sigma_N}{N}\right)^2 = \left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_{R_{li}}}{R_{li}}\right)^2 \quad \Rightarrow \quad \sigma_N = N \cdot \sqrt{\left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_{R_{li}}}{R_{li}}\right)^2}
+\end{align*}
+
+\subsection*{Step 2: Uncertainty in $D_1 = I \cdot R_{li}$}
+\begin{align*}
+D_1 = I \cdot R_{li} \quad \Rightarrow \quad \left(\frac{\sigma_{D_1}}{D_1}\right)^2 = \left(\frac{\sigma_I}{I}\right)^2 + \left(\frac{\sigma_{R_{li}}}{R_{li}}\right)^2 \quad \Rightarrow \quad \sigma_{D_1} = D_1 \cdot \sqrt{\left(\frac{\sigma_I}{I}\right)^2 + \left(\frac{\sigma_{R_{li}}}{R_{li}}\right)^2}
+\end{align*}
+
+\subsection*{Step 3: Uncertainty in Denominator $D = D_1 - V$}
+\begin{align*}
+D = D_1 - V \quad \Rightarrow \quad \sigma_D = \sqrt{\sigma_{D_1}^2 + \sigma_V^2}
+\end{align*}
+
+\subsection*{Step 4: Uncertainty in Quotient $R_V = \frac{N}{D}$}
+\begin{align*}
+R_V = \frac{N}{D} \quad \Rightarrow \quad \left(\frac{\sigma_{R_V}}{R_V}\right)^2 = \left(\frac{\sigma_N}{N}\right)^2 + \left(\frac{\sigma_D}{D}\right)^2 \quad \Rightarrow \quad \sigma_{R_V} = R_V \cdot \sqrt{\left(\frac{\sigma_N}{N}\right)^2 + \left(\frac{\sigma_D}{D}\right)^2}
+\end{align*}
+
+\subsection*{Final Combined Expression}
+\begin{align*}
+\sigma_{R_V} = \frac{V \cdot R_{li}}{I \cdot R_{li} - V} \cdot \sqrt{\left(\frac{\sigma_V}{V}\right)^2 + \left(\frac{\sigma_{R_{li}}}{R_{li}}\right)^2 + \left(\frac{\sigma_{I \cdot R_{li}}}{I \cdot R_{li}}\right)^2 + \left(\frac{\sigma_V}{I \cdot R_{li} - V}\right)^2}
+\end{align*}
+
+Where: $\sigma_V = \texttt{dV}$, $\sigma_I = \texttt{dI}$, $\sigma_{R_{li}} = \texttt{dR\_li}$
+
+\newpage
+
+\section{Linear Regression with Uncertainty Propagation}
+\label{app:c_linear_uncertainties}
+
+\subsection*{Linear Model and Definitions}
+\begin{align*}
+y = mx + b \quad \text{where} \quad N = \text{number of data points}
+\end{align*}
+
+\subsection*{Key Quantities}
+\begin{align*}
+\Delta &= N \sum x_i^2 - \left(\sum x_i\right)^2 \\
+S_x &= \sum x_i, \quad S_y = \sum y_i, \quad S_{xx} = \sum x_i^2, \quad S_{xy} = \sum x_i y_i
+\end{align*}
+
+\subsection*{Parameter Estimation}
+\begin{align*}
+m &= \frac{N \cdot S_{xy} - S_x \cdot S_y}{\Delta} \quad \Rightarrow \quad \text{slope} \\
+b &= \frac{S_y - m \cdot S_x}{N} \quad \Rightarrow \quad \text{intercept}
+\end{align*}
+
+\subsection*{Residuals and Variance}
+\begin{align*}
+\hat{y}_i &= b + m x_i \quad \Rightarrow \quad \text{predicted values} \\
+r_i &= y_i - \hat{y}_i \quad \Rightarrow \quad \text{residuals} \\
+\sigma_y^2 &= \sqrt{\frac{\sum r_i^2}{N-2}} \quad \Rightarrow \quad \text{standard error of estimate}
+\end{align*}
+
+\subsection*{Parameter Uncertainties}
+\begin{align*}
+\sigma_m &= \sqrt{\frac{\sigma_y^2 \cdot N}{\Delta}} \quad \Rightarrow \quad \text{slope uncertainty} \\
+\sigma_b &= \sqrt{\frac{\sigma_y^2 \cdot S_{xx}}{\Delta}} \quad \Rightarrow \quad \text{intercept uncertainty}
+\end{align*}
+
+\subsection*{Chi-Squared Analysis}
+\begin{align*}
+\chi^2 &= \sum \left(\frac{y_i - \hat{y}_i}{\sigma_{y_i}}\right)^2 \quad \Rightarrow \quad \text{goodness of fit} \\
+\chi_\nu^2 &= \frac{\chi^2}{N-2} \quad \Rightarrow \quad \text{reduced chi-squared} \\
+p &= 1 - F(\chi^2, N-2) \quad \Rightarrow \quad \text{p-value}
+\end{align*}
+
+Where: $\sigma_{y_i}$ are the individual y-uncertainties, $F$ is the chi-squared CDF
 
 \end{document}

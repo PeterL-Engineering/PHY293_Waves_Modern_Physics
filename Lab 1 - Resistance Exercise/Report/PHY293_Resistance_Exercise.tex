@@ -243,23 +243,25 @@ The internal resistance of the power source can be derived from the relationship
 The measured resistance $m_1$ represents the parallel combination of the voltmeter resistance and the internal resistance:
 
 \begin{align*}
-m_1 = \frac{R_V \cdot R_{internal}}{R_V + R_{internal}}
+m_1 = \frac{R_V \cdot R_{1}}{R_V + R_{1}}
 \end{align*}
 
-Solving this equation for $R_{internal}$:
+Solving this equation for $R_{1}$:
 
 \begin{align*}
-m_1 (R_V + R_{internal}) &= R_V \cdot R_{internal} \\
-m_1 R_V + m_1 R_{internal} &= R_V \cdot R_{internal} \\
-m_1 R_V &= R_V \cdot R_{internal} - m_1 R_{internal} \\
-m_1 R_V &= R_{internal} (R_V - m_1)
+m_1 (R_V + R_{1}) &= R_V \cdot R_{1} \\
+m_1 R_V + m_1 R_{1} &= R_V \cdot R_{1} \\
+m_1 R_V &= R_V \cdot R_{1} - m_1 R_{1} \\
+m_1 R_V &= R_{1} (R_V - m_1)
 \end{align*}
 
 Thus, the explicit expression for the internal resistance is:
 
 \begin{align*}
-R_{internal} = \frac{m_1 \cdot R_V}{R_V - m_1}
+R_{1} = \frac{m_1 \cdot R_V}{R_V - m_1}
 \end{align*}
+
+We obtained a value of $-4.6000e-02 \pm -4.7631e+00 \Omega$ and our uncertainity propagation can be found in \ref{app:d_R1_uncertainty}
 
 \subsection{Interal Resistance Using R\_A}
 
@@ -267,23 +269,25 @@ The internal resistance of the power source can also be derived from the relatio
 The measured resistance $m_2$ represents the parallel combination of the resistance $R_A$ and the internal resistance:
 
 \begin{align*}
-m_2 = \frac{R_A \cdot R_{internal}}{R_A + R_{internal}}
+m_2 = \frac{R_A \cdot R_{2}}{R_A + R_{2}}
 \end{align*}
 
-Solving this equation for $R_{internal}$:
+Solving this equation for $R_{2}$:
 
 \begin{align*}
-m_2 (R_A + R_{internal}) &= R_A \cdot R_{internal} \\
-m_2 R_A + m_2 R_{internal} &= R_A \cdot R_{internal} \\
-m_2 R_A &= R_A \cdot R_{internal} - m_2 R_{internal} \\
-m_2 R_A &= R_{internal} (R_A - m_2)
+m_2 (R_A + R_{2}) &= R_A \cdot R_{2} \\
+m_2 R_A + m_2 R_{2} &= R_A \cdot R_{2} \\
+m_2 R_A &= R_A \cdot R_{2} - m_2 R_{2} \\
+m_2 R_A &= R_{2} (R_A - m_2)
 \end{align*}
 
 Thus, the explicit expression for the internal resistance is:
 
 \begin{align*}
-R_{internal} = \frac{m_2 \cdot R_A}{R_A - m_2}
+R_{2} = \frac{m_2 \cdot R_A}{R_A - m_2}
 \end{align*}
+
+We obtained a value of $1.8057e+00 \pm -1.9848e+01 \Omega$ and our uncertainity propagation can be found in \ref{app:e_R2_uncertainty}
 
 \section{Conclusion}
 
@@ -391,5 +395,61 @@ p &= 1 - F(\chi^2, N-2) \quad \Rightarrow \quad \text{p-value}
 \end{align*}
 
 Where: $\sigma_{y_i}$ are the individual y-uncertainties, $F$ is the chi-squared CDF
+
+\newpage
+
+\section{Uncertainty Derivation for Resistance Measurement R\_1}
+\label{app:d_R1_uncertainty}
+
+\subsection*{Step 1: Uncertainty in Multiplication $m_1 \cdot R_V$}
+\begin{align*}
+z = m_1 \cdot R_V \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_{m_1}}{m_1}\right)^2 + \left(\frac{\sigma_{R_V}}{R_V}\right)^2 \quad \Rightarrow \quad \sigma_{mult1} = m_1 \cdot R_V \cdot \sqrt{\left(\frac{\sigma_{m_1}}{m_1}\right)^2 + \left(\frac{\sigma_{R_V}}{R_V}\right)^2}
+\end{align*}
+
+\subsection*{Step 2: Uncertainty in Subtraction $R_V - m_1$}
+\begin{align*}
+z = R_V - m_1 \quad \Rightarrow \quad \sigma_z = \sqrt{\sigma_{R_V}^2 + \sigma_{m_1}^2} \quad \Rightarrow \quad \sigma_{sub2} = \sqrt{\sigma_{R_V}^2 + \sigma_{m_1}^2}
+\end{align*}
+
+\subsection*{Step 3: Uncertainty in Division $\frac{m_1 \cdot R_V}{R_V - m_1}$}
+\begin{align*}
+z = \frac{A}{B} \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_A}{A}\right)^2 + \left(\frac{\sigma_B}{B}\right)^2 \quad \Rightarrow \quad \sigma_{R_1} = \frac{m_1 \cdot R_V}{R_V - m_1} \cdot \sqrt{\left(\frac{\sigma_{mult1}}{m_1 \cdot R_V}\right)^2 + \left(\frac{\sigma_{sub2}}{R_V - m_1}\right)^2}
+\end{align*}
+
+\subsection*{Complete Uncertainty Propagation}
+\begin{align*}
+\sigma_{R_1} &= \frac{m_1 \cdot R_V}{R_V - m_1} \cdot \sqrt{\left[\sqrt{\left(\frac{\sigma_{m_1}}{m_1}\right)^2 + \left(\frac{\sigma_{R_V}}{R_V}\right)^2}\right]^2 + \left[\frac{\sqrt{\sigma_{R_V}^2 + \sigma_{m_1}^2}}{R_V - m_1}\right]^2} \\
+\sigma_{R_1} &= \frac{m_1 \cdot R_V}{R_V - m_1} \cdot \sqrt{\left(\frac{\sigma_{m_1}}{m_1}\right)^2 + \left(\frac{\sigma_{R_V}}{R_V}\right)^2 + \left(\frac{\sqrt{\sigma_{R_V}^2 + \sigma_{m_1}^2}}{R_V - m_1}\right)^2}
+\end{align*}
+
+Where: $\sigma_{m_1} = \texttt{dm1}$, $\sigma_{R_V} = \texttt{dR\_V}$
+
+\newpage
+
+\section{Uncertainty Derivation for Resistance Measurement R\_2}
+\label{app:e_R2_uncertainty}
+
+\subsection*{Step 1: Uncertainty in Multiplication $m_2 \cdot R_A$}
+\begin{align*}
+z = m_2 \cdot R_A \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2 \quad \Rightarrow \quad \sigma_{mult1} = m_2 \cdot R_A \cdot \sqrt{\left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2}
+\end{align*}
+
+\subsection*{Step 2: Uncertainty in Subtraction $R_A - m_2$}
+\begin{align*}
+z = R_A - m_2 \quad \Rightarrow \quad \sigma_z = \sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2} \quad \Rightarrow \quad \sigma_{sub2} = \sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}
+\end{align*}
+
+\subsection*{Step 3: Uncertainty in Division $\frac{m_2 \cdot R_A}{R_A - m_2}$}
+\begin{align*}
+z = \frac{A}{B} \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_A}{A}\right)^2 + \left(\frac{\sigma_B}{B}\right)^2 \quad \Rightarrow \quad \sigma_{R_2} = \frac{m_2 \cdot R_A}{R_A - m_2} \cdot \sqrt{\left(\frac{\sigma_{mult1}}{m_2 \cdot R_A}\right)^2 + \left(\frac{\sigma_{sub2}}{R_A - m_2}\right)^2}
+\end{align*}
+
+\subsection*{Complete Uncertainty Propagation}
+\begin{align*}
+\sigma_{R_2} &= \frac{m_2 \cdot R_A}{R_A - m_2} \cdot \sqrt{\left[\sqrt{\left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2}\right]^2 + \left[\frac{\sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}}{R_A - m_2}\right]^2} \\
+\sigma_{R_2} &= \frac{m_2 \cdot R_A}{R_A - m_2} \cdot \sqrt{\left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2 + \left(\frac{\sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}}{R_A - m_2}\right)^2}
+\end{align*}
+
+Where: $\sigma_{m_2} = \texttt{dm2}$, $\sigma_{R_A} = \texttt{dR\_A}$
 
 \end{document}

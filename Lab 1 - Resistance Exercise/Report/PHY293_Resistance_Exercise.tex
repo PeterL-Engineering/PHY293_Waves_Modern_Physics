@@ -157,7 +157,12 @@ Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\
 
 \newpage
 \subsection{Circuit Option 1}
-\textbf{INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 1}
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.9\linewidth]{Figs/Cct_1_Diagram.png}
+  \caption{Circuit option 1 setup}
+  \label{fig:Cct_1_Diagram}
+\end{figure}
 
 \begin{table}[htbp]
 \centering
@@ -198,7 +203,14 @@ The resistance values $R_V$ used in this fit were calculated from voltage, curre
 \newpage
 
 \subsection{Circuit Option 2}
-\textbf{INCLUDE DIAGRAM/SKETCH OF CIRCUIT OPTION 2}
+
+\begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
+  \centering
+  \includegraphics[width=0.9\linewidth]{Figs/Cct_2_Diagram.png}
+  \caption{Circuit option 2 setup}
+  \label{fig:Cct_2_Diagram}
+\end{figure}
+
 \begin{table}[htbp]
 \centering
 \caption{Circuit 2 Readings \& Results}
@@ -391,5 +403,31 @@ p &= 1 - F(\chi^2, N-2) \quad \Rightarrow \quad \text{p-value}
 \end{align*}
 
 Where: $\sigma_{y_i}$ are the individual y-uncertainties, $F$ is the chi-squared CDF
+\newpage
+
+\section{Uncertainty Derivation for Internal Resistance}
+
+\subsection*{Step 1: Uncertainty in Numerator $N = R_{V} \cdot m_{1}$}
+\begin{align*}
+N = R_{V} \cdot m_{1} \quad \Rightarrow \quad \left(\frac{\sigma_N}{N}\right)^2 = \left(\frac{\sigma_{m_{1}}}{m_{1}}\right)^2 + \left(\frac{\sigma_{R_{V}}}{R_{V}}\right)^2 \quad \Rightarrow \quad \sigma_N = N \cdot \sqrt{\left(\frac{\sigma_{m_{1}}}{m_{1}}\right)^2 + \left(\frac{\sigma_{R_{V}}}{R_{V}}\right)^2}
+\end{align*}
+
+\subsection*{Step 2: Uncertainty in Denominator $D = R_{V} - m_{1}$}
+\begin{align*}
+D = R_{V} - m_{1} \quad \Rightarrow \quad \sigma_D = \sqrt{\sigma_{R_{V}}^2 + \sigma_{m_{1}}^2}
+\end{align*}  
+
+\subsection*{Step 3: Uncertainty in Quotient $R_{internal} = \frac{N}{D}$}
+\begin{align*}
+R_{internal} = \frac{N}{D} \quad \Rightarrow \quad \left(\frac{\sigma_{R_internal}}{R_{internal}}\right)^2 = \left(\frac{\sigma_N}{N}\right)^2 + \left(\frac{\sigma_D}{D}\right)^2 \quad \Rightarrow \quad \sigma_{R_{internal}} = R_{internal}\cdot \sqrt{\left(\frac{\sigma_N}{N}\right)^2 + \left(\frac{\sigma_D}{D}\right)^2}
+\end{align*}
+
+\subsection*{Final Combined Expression}
+\begin{align*}
+\sigma_{R_{internal}} = \frac{m_{1} \cdot R_{V}}{{R_{V}} - m_{1}} \cdot \sqrt{\left(\frac{\sigma_{m_{1}}}{m_{1}}\right)^2 + \left(\frac{\sigma_{R_{V}}}{R_{V}}\right)^2 + \left(\frac{\sigma_{I \cdot R_{li}}}{I \cdot R_{li}}\right)^2 + \left(\frac{\sigma_V}{I \cdot R_{li} - V}\right)^2}
+\end{align*}
+
+Where: $\sigma_V = \texttt{dV}$, $\sigma_I = \texttt{dI}$, $\sigma_{R_{li}} = \texttt{dR\_li}$
+
 
 \end{document}

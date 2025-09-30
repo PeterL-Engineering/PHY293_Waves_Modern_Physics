@@ -160,7 +160,8 @@ Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\
 \begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
   \centering
   \includegraphics[width=0.9\linewidth]{Figs/Cct_1_Diagram.png}
-  \caption{Circuit option 1 setup}
+  \caption{A simplified diagram of our circuit 2 setup.
+            The voltage was measured by plugging the banana cables into the positive and negative terminals of the DC power supply.}
   \label{fig:Cct_1_Diagram}
 \end{figure}
 
@@ -184,11 +185,11 @@ Uncertainty ($\Omega$) & $\pm$0.25 & $\pm$0.49 & $\pm$0.1.42 & $\pm$.0005 k & $\
 \end{tabular}
 \end{table}
 
-From the experimental data, a linear regression was applied to determine the slope $m_2$ and its associated uncertainty. 
+From the experimental data, a linear regression was applied to determine the slope $m_1$ and its associated uncertainty (see \ref{fig:circuit_1_fit}). 
 The analysis yielded a slope value of $-0.046 \pm 0.004~\Omega$, where the uncertainty was derived through the standard error propagation for linear fitting parameters (see Appendix \ref{app:c_linear_uncertainties}).
 
 The $\chi^2$ analysis and examination of residuals suggest a potential underestimation of the experimental uncertainties. 
-The resistance values $R_V$ used in this fit were calculated from voltage, current, and lead resistance measurements, with their uncertainties propagated according to the method detailed in Appendix \ref{app:b_RV_uncertainty}.
+The resistance values $R_A$ used in this fit were calculated from voltage, current, and lead resistance measurements, with their uncertainties propagated according to the method detailed in Appendix \ref{app:a_RA_uncertainty}.
 \begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
   \centering
   \includegraphics[width=1\linewidth]{Figs/Circuit_1.png}
@@ -200,14 +201,13 @@ The resistance values $R_V$ used in this fit were calculated from voltage, curre
                 \label{fig:circuit_1_fit}
 \end{figure}
 
-\newpage
-
 \subsection{Circuit Option 2}
 
 \begin{figure}[htbp]            % h=here, t=top, b=bottom, p=page float
   \centering
   \includegraphics[width=0.9\linewidth]{Figs/Cct_2_Diagram.png}
-  \caption{Circuit option 2 setup}
+  \caption{A simplified diagram of our circuit 2 setup.
+            The voltage was measured by plugging the banana cables into the positive and negative terminals of the resistor.}
   \label{fig:Cct_2_Diagram}
 \end{figure}
 
@@ -231,11 +231,12 @@ The resistance values $R_V$ used in this fit were calculated from voltage, curre
 \end{tabular}
 \end{table}
 
-From the experimental data, a linear regression was applied to determine the slope $m_2$ and its associated uncertainty. 
+From the experimental data, a linear regression was applied to determine the slope $m_2$ and its associated uncertainty (see \ref{fig:circuit_2_fit}). 
 The analysis yielded a slope value of $-1.813 \pm 0.003~\Omega$, where the uncertainty was derived through the standard error propagation for linear fitting parameters (see Appendix \ref{app:c_linear_uncertainties}).
 
+
 The $\chi^2$ analysis and examination of residuals suggest a potential underestimation of the experimental uncertainties. 
-The resistance values $R_A$ used in this fit were calculated from voltage and current measurements, with their uncertainties propagated according to the method detailed in Appendix \ref{app:a_RA_uncertainty}.
+The resistance values $R_V$ used in this fit were calculated from voltage and current measurements, with their uncertainties propagated according to the method detailed in Appendix \ref{app:b_RV_uncertainty}.
 
 \begin{figure}[htbp]
   \centering
@@ -273,7 +274,7 @@ Thus, the explicit expression for the internal resistance is:
 R_{1} = \frac{m_1 \cdot R_V}{R_V - m_1}
 \end{align*}
 
-We obtained a value of $-4.6000e-02 \pm -4.7631e+00 \Omega$ and our uncertainity propagation can be found in \ref{app:d_R1_uncertainty}
+We obtained a value of $-0.0460 \pm 4.7631 \Omega$ and our uncertainity propagation can be found in \ref{app:d_R1_uncertainty}
 
 \subsection{Interal Resistance Using R\_A}
 
@@ -299,11 +300,17 @@ Thus, the explicit expression for the internal resistance is:
 R_{2} = \frac{m_2 \cdot R_A}{R_A - m_2}
 \end{align*}
 
-We obtained a value of $1.8057e+00 \pm -1.9848e+01 \Omega$ and our uncertainity propagation can be found in \ref{app:e_R2_uncertainty}
+We obtained a value of $1.8057 \pm 19.848 \Omega$ and our uncertainity propagation can be found in \ref{app:e_R2_uncertainty}
 
 \subsection{Internal Resistance Results Conclusion}
 
-The internal resistance results differ when using $R_{V}$ and $R_{A}$ because of the anmeter and voltmeter's internal resistances. Theoretically, the option 1 circuit should be more accurate as the readings would be closer to the true source current and voltage. The second option circuit should be less accurate because the anmeter would cause a slight voltage drop and the voltmeter would draw small current. Our results do not reflect this regarding the internal resistance using $R_{V}$—for which a physically impossible negative value was determined—likely due to measurement or calculation error. The voltmeter's internal resistance may not be large enough relative to $R_{1}$, meaning that as the resistances for $R_{li}$ increase, their uncertainties also increase significantly. The error propagation calculations may have further skewed the results as they utilize average values for the calculations, meaning the high load resistors created greater average values. The slope, m, is also error-prone, which could be an additional source of error.  
+The internal resistance results differ when using $R_V$ and $R_A$ due to the internal resistances of the ammeter and voltmeter. 
+Theoretically, the Option 1 circuit should yield more accurate results, as its readings more closely reflect the true source current and voltage. 
+In contrast, the Option 2 circuit is expected to be less accurate, since the ammeter introduces a slight voltage drop and the voltmeter draws a small current. 
+However, our results do not align with this theory regarding $R_V$—a physically impossible negative value was obtained, likely due to measurement or calculation errors. 
+This discrepancy may be attributed to the voltmeter's internal resistance not being sufficiently large relative to $R_1$. Furthermore, as the load resistances $R_{li}$ increase, their uncertainties also grow significantly. 
+Error propagation, which relies on average values for calculations, may have further skewed the results, particularly since higher load resistances lead to larger average values. 
+The slope $m$ is another potential source of error, contributing to the overall uncertainty in the results.
 
 \label{last_page}
 

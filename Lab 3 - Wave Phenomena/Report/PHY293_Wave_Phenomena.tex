@@ -66,20 +66,44 @@ encoder-decoder architecture. This design captures high-level semantic features 
 
 \vspace{2ex}
 
-\begin{multicols}{2}
-
 \section{Introduction}
 
-\section{Scope \& Feasibility}
+Standard AC and DC circuit theory makes the assumption that the speed of information propagation in a circuit is ideal and is infinite.
+Thus, if a change occurs anywhere along the circuit, then the rest of the circuit will respond instantaneously to that change.
+In reality, pulses are limited by the physical properties of the cable insulator, and do not travel nearly as fast as the speed of light.
 
-Begin by solving Hudgkin-Huxley equations using Euler's and Improved Euler's Method (since these are the methods we have learned thus far from ESC103)
-then expand and solve using Runge-Kutta methods once they are covered in PHY293. At a high-level, these solvers will generate synthetic neural data through
-the Hodgkin-Huxley equations which are a set of non-linear ordinary differential equations that describe how ion channels create action potential.
+\section{Background Information}
 
-Following this we will design and implement a digital filter to isolate the spike band, and create a spike detection algorithm based upon an adaptive threshold
-derived from the signal's noise floor.
 
-\section{Technical Background}
+
+\subsection{The Ideal Transmission Line}
+
+Transmission lines can be abstracted as discrete repeated networks of inducts (L) and capcitors (C) that can store and transmit electric and magnetic energy.
+The most foundational block of an ideal transmission line is an LC element of lenght $dx$ and zero electric resistance \textbf{REFERENCE IMAGE OF TRANSMISSION LINE}
+
+\textbf{INSERT IMAGE OF TRANSMISSION LINE CIRCUIT HERE}
+
+We can represent these as waves by first analysing the rates of change for both current I and voltage V take into account the self inductance of the element ($L_0dx$) and its capacitance ($C_0dx$)
+
+\[
+\frac{\partial V}{\partial x} = -L_0\frac{\partial I}{\partial t}, \quad \frac{\partial I}{\partial x} = -C_0\frac{\partial V}{\partial t}
+\]
+
+From these rates of change, we can obtain the wave equations for voltage and current:
+
+\[
+\frac{\partial^2 V}{\partial x^2} = L_0C_0\frac{\partial^2 V}{\partial t^2}, \quad \frac{\partial^2 I}{\partial x^2} = L_0C_0\frac{\partial^2 I}{\partial t^2}
+\]
+
+\subsection{Coaxial Cables}
+
+\subsection{The Load Effect}
+
+\section{Methods \& Procedures}
+
+\subsection{Exercise 1}
+
+\subsection{Exercise 2}
 
 \section{Conclusion}
 
@@ -89,5 +113,4 @@ derived from the signal's noise floor.
 \bibliographystyle{iclr2022_conference}
 \bibliography{PHY293_Proposal_Ref}
 
-\end{multicols}
 \end{document}

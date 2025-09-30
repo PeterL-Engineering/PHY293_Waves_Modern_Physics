@@ -276,42 +276,35 @@ R_{1} = \frac{m_1 \cdot R_V}{R_V - m_1}
 
 We obtained a value of $-0.0460 \pm 4.7631 \Omega$ and our uncertainity propagation can be found in \ref{app:d_R1_uncertainty}
 
+\newpage
+
 \subsection{Interal Resistance Using R\_A}
 
-The internal resistance of the power source can also be derived from the relationship between the measured resistance $m_2$, the calculated resistance $R_A$, and the internal resistance $R_{internal}$. 
-The measured resistance $m_2$ represents the parallel combination of the resistance $R_A$ and the internal resistance:
+Given that the voltmeter only measures the change in voltage across the load with the ammeter placed beforehand:
+\[
+R = R_2 + R_A
+\]
+By combining this relationship with the initial equation given in the introduction:
+\[
+V = V_{\infty} - I(R_2 + R_A)
+\]
 
+Thus, we can obtain the explicit form for $R_2$ by comparing this to the linear approximation for the experimental data:
 \begin{align*}
-m_2 = \frac{R_A \cdot R_{2}}{R_A + R_{2}}
+m_2 = -(R_2 + R_A) \\
+m_2 = - R_2 - R_A \\
+R_2 = -m_2 - R_A
 \end{align*}
 
-Solving this equation for $R_{2}$:
-
-\begin{align*}
-m_2 (R_A + R_{2}) &= R_A \cdot R_{2} \\
-m_2 R_A + m_2 R_{2} &= R_A \cdot R_{2} \\
-m_2 R_A &= R_A \cdot R_{2} - m_2 R_{2} \\
-m_2 R_A &= R_{2} (R_A - m_2)
-\end{align*}
-
-Thus, the explicit expression for the internal resistance is:
-
-\begin{align*}
-R_{2} = \frac{m_2 \cdot R_A}{R_A - m_2}
-\end{align*}
-
-We obtained a value of $1.8057 \pm 19.848 \Omega$ and our uncertainity propagation can be found in \ref{app:e_R2_uncertainty}
+We obtained a value of $0.0445 \pm 3.4759 \times 10^3  \Omega$ and our uncertainity propagation can be found in \ref{app:e_R2_uncertainty}
 
 \subsection{Internal Resistance Results Conclusion}
 
-The internal resistance results differ when using $R_V$ and $R_A$ due to the internal resistances of the ammeter and voltmeter. 
-Theoretically, the Option 1 circuit should yield more accurate results, as its readings more closely reflect the true source current and voltage. 
-In contrast, the Option 2 circuit is expected to be less accurate, since the ammeter introduces a slight voltage drop and the voltmeter draws a small current. 
-However, our results do not align with this theory regarding $R_V$—a physically impossible negative value was obtained, likely due to measurement or calculation errors. 
-This discrepancy may be attributed to the voltmeter's internal resistance not being sufficiently large relative to $R_1$. Furthermore, as the load resistances $R_{li}$ increase, their uncertainties also grow significantly. 
-Error propagation, which relies on average values for calculations, may have further skewed the results, particularly since higher load resistances lead to larger average values. 
-The slope $m$ is another potential source of error, contributing to the overall uncertainty in the results.
-
+The discrepancy between the two internal resistance values stems from fundamentally different measurement approaches. 
+The Option 1 circuit (using $R_V$) theoretically isolates the source resistance more effectively by placing the voltmeter directly across the load, while the Option 2 circuit (using $R_A$) inherently includes the ammeter's resistance in its measurement. 
+However, both methods produced negative resistance values, indicating significant experimental issues. 
+The negative results likely arose from the voltmeter resistance being insufficiently large relative to the measured internal resistance, causing numerical instability where small measurement errors were dramatically amplified. 
+Additionally, uncertainties in the meter resistances themselves and potential circuit configuration errors contributed to the physically impossible results, suggesting systematic problems with the experimental setup rather than theoretical flaws in the derivation.
 \label{last_page}
 
 \newpage
@@ -445,30 +438,22 @@ z = \frac{A}{B} \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \le
 
 Where: $\sigma_{m_1} = \texttt{dm1}$, $\sigma_{R_V} = \texttt{dR\_V}$
 
-\newpage
-
 \section{Uncertainty Derivation for Resistance Measurement R\_2}
 \label{app:e_R2_uncertainty}
 
-\subsection*{Step 1: Uncertainty in Multiplication $m_2 \cdot R_A$}
+\subsection*{Step 1: Uncertainty in Addition $m_2 + R_A$}
 \begin{align*}
-z = m_2 \cdot R_A \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2 \quad \Rightarrow \quad \sigma_{mult1} = m_2 \cdot R_A \cdot \sqrt{\left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2}
+z = m_2 + R_A \quad \Rightarrow \quad \sigma_z = \sqrt{\sigma_{m_2}^2 + \sigma_{R_A}^2} \quad \Rightarrow \quad \sigma_{sum} = \sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}
 \end{align*}
 
-\subsection*{Step 2: Uncertainty in Subtraction $R_A - m_2$}
+\subsection*{Step 2: Uncertainty in Negation $R_2 = -(m_2 + R_A)$}
 \begin{align*}
-z = R_A - m_2 \quad \Rightarrow \quad \sigma_z = \sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2} \quad \Rightarrow \quad \sigma_{sub2} = \sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}
-\end{align*}
-
-\subsection*{Step 3: Uncertainty in Division $\frac{m_2 \cdot R_A}{R_A - m_2}$}
-\begin{align*}
-z = \frac{A}{B} \quad \Rightarrow \quad \left(\frac{\sigma_z}{z}\right)^2 &= \left(\frac{\sigma_A}{A}\right)^2 + \left(\frac{\sigma_B}{B}\right)^2 \quad \Rightarrow \quad \sigma_{R_2} = \frac{m_2 \cdot R_A}{R_A - m_2} \cdot \sqrt{\left(\frac{\sigma_{mult1}}{m_2 \cdot R_A}\right)^2 + \left(\frac{\sigma_{sub2}}{R_A - m_2}\right)^2}
+z = -A \quad \Rightarrow \quad \sigma_z = \sigma_A \quad \Rightarrow \quad \sigma_{R_2} = \sigma_{sum}
 \end{align*}
 
 \subsection*{Complete Uncertainty Propagation}
 \begin{align*}
-\sigma_{R_2} &= \frac{m_2 \cdot R_A}{R_A - m_2} \cdot \sqrt{\left[\sqrt{\left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2}\right]^2 + \left[\frac{\sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}}{R_A - m_2}\right]^2} \\
-\sigma_{R_2} &= \frac{m_2 \cdot R_A}{R_A - m_2} \cdot \sqrt{\left(\frac{\sigma_{m_2}}{m_2}\right)^2 + \left(\frac{\sigma_{R_A}}{R_A}\right)^2 + \left(\frac{\sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}}{R_A - m_2}\right)^2}
+\sigma_{R_2} = \sqrt{\sigma_{R_A}^2 + \sigma_{m_2}^2}
 \end{align*}
 
 Where: $\sigma_{m_2} = \texttt{dm2}$, $\sigma_{R_A} = \texttt{dR\_A}$

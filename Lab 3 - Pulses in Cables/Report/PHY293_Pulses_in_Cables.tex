@@ -4,9 +4,9 @@
 \input{math_commands.tex}
 
 %######## PHY293: Uncomment your submission name
-%\newcommand{\chename}{ - Project Proposal}
-%\newcommand{\chename}{Progress Report}
-%\newcommand{\chename}{Final Report}
+\newcommand{\phyname}{ - PRA0104: 24 September 2025 (12PM - 3PM)}
+%\newcommand{\phyname}{Progress Report}
+%\newcommand{\phyname}{Final Report}
 
 %######## PHY293: Put your Group Number here
 %\newcommand{\gpnumber}{40}
@@ -89,15 +89,68 @@ We can represent these as waves by first analysing the rates of change for both 
 \frac{\partial V}{\partial x} = -L_0\frac{\partial I}{\partial t}, \quad \frac{\partial I}{\partial x} = -C_0\frac{\partial V}{\partial t}
 \]
 
-From these rates of change, we can obtain the wave equations for voltage and current:
+From these rates of change, we can obtain the wave equations for voltage and current, and the velocity of wave propagation:
 
 \[
 \frac{\partial^2 V}{\partial x^2} = L_0C_0\frac{\partial^2 V}{\partial t^2}, \quad \frac{\partial^2 I}{\partial x^2} = L_0C_0\frac{\partial^2 I}{\partial t^2}
 \]
+\[
+\nu^2 = \frac{}{L_0 C_0}
+\]
+
+We can integrate the voltage drop along an infinitesimal unit of length with a solution of:
+\[
+V_+ = \nu L_0I_+
+\]
+where the subscript + means the positive direction of wave propagation.
+The ration then of voltage to current is called the characteristic impedance of the line $Z_0$:
+\[
+\frac{V_+}{I_+} = Z_0 = \nu L_0 = \sqrt{\frac{L_0}{C_0}}
+\]
 
 \subsection{Coaxial Cables}
 
+Consider two conductor cables, separated by a dielectric material \textbf{REFERENCE FIGURE OF CROSS SECTIONAL CABLE} with a continuous sitribution of LC elements. 
+Inductance per unit length can be written as:
+\[
+L_0 = \frac{\mu}{2\pi}\ln\frac{R_2}{R_1}
+\] 
+
+\textbf{INSERT COAXIAL CABLE CROSS SECTION HERE}
+
+where $R_1$ and $R_2$ are the radii of the inner and outer conductors, respectively; $\mu$ is the magnetic permeability of the dielctric.
+Capcitance per unit length is given by:
+\[
+C_0 = \frac{2\pi\epsilon}{ln\frac{R_2}{R_1}}
+\]
+where $\epsilon$ is the permittivity of the dielectric.
+Taking the product of equations 10 and 11 it can be verified that
+\[
+\frac{1}{L_0C_0} = \frac{1}{\epsilon\mu} = \nu^2
+\]
+
+Knowing the velocity of signal travel in a certain coaxial cable, we can accurately calculate the travel time of an electrical signal along a given length.
+A useful visual analogy of a pulse traveling in the cable is that of a wave moving along a rope. 
+We shall see that the action of the pulse at the end of the cable has a strong analogy with what happens at the fixed end of an oscillating rope, suggesting that the math might be similar.
+In the laboratory we shall see these effects by using pulses of duration ~ 10-8 seconds = 10ns, since this corresponds to a “length” of ~3m.
+“Pulse length” is the real physical length of the pulse in the cable, so we can use the “length” of the pulse in either time units or length units.
+
 \subsection{The Load Effect}
+
+To determine the effect of a load with impedance $Z_L$ at the end of the cable we can solve the boundary conditions that must be satisfied by a wave travilling in the positive + and negative + at the boundary.
+Inside the cable the impedance remains the same
+\[
+\frac{V_+}{I_+} = Z_0 = - \frac{V_-}{I_-}
+\]
+at the end of the cable the load $Z_L$ sees teh combined voltage $V = V_+ + V_-$ and current $I = I_+ + I_-$ to give:
+\[
+Z_L = \frac{V}{I}
+\]
+These equations can be used to define a reflection coefficient $r = \frac{V_-}{V_+}$ and a transmission coefficient $t = \frac{V}{V_+}$
+
+\begin{align*}
+    r = 
+\end{align*}
 
 \section{Methods \& Procedures}
 
@@ -110,7 +163,7 @@ From these rates of change, we can obtain the wave equations for voltage and cur
 \label{last_page}
 
 \newpage
-\bibliographystyle{iclr2022_conference}
-\bibliography{PHY293_Proposal_Ref}
+% \bibliographystyle{iclr2022_conference}
+% \bibliography{PHY293_Proposal_Ref}
 
 \end{document}
